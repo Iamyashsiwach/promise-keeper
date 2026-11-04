@@ -1,0 +1,8 @@
+.local/
+__pycache__/
+*.sqlite3
+*.sqlite3-journal
+.DS_Store
+.env
+.env.*
+submission/promise-keeper-walkthrough 2.srt

@@ -1,0 +1,32 @@
+params:
+  name:
+    type: string
+    default: promise-keeper
+  deploy_agent:
+    type: string
+    default: promise-builder
+  agent_1:
+    type: string
+    default: promise-coordinator
+room:
+  name: '{name}'
+  description: Turn a confirmed customer export request into a verified artifact and
+    version-specific human review.
+  instructions: Work on the PromiseKeeper prototype in the project directory. Read
+    README.md, DEMO.md and agents/room-instructions.md before acting. The human confirms
+    exact fields and row count; promise-coordinator records the agreement and checks
+    evidence; promise-builder changes only the sample exporter and runs it. The human
+    alone executes the local approval command. No authenticated chat approval exists
+    yet. Do not fabricate evidence, weaken verification, impersonate the human, or
+    send customer messages. Preserve actual message references and show real verification
+    receipts. Record requirement changes as new revisions; check current status before
+    drafting any update. Use one thread per request where supported.
+  bridge: Mattermost
+  channel_type: channel_public
+  read_visibility: public
+  write_visibility: public
+  agents:
+  - '{deploy_agent}'
+  - '{agent_1}'
+  users:
+  - user

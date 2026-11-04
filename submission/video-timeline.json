@@ -1,0 +1,50 @@
+[
+  {
+    "start_seconds": 0,
+    "duration_seconds": 9.074,
+    "title": "Done isn\u2019t the same as right.",
+    "narration": "An AI can finish a task and still deliver the wrong thing. What matters is whether the result matches what you agreed to."
+  },
+  {
+    "start_seconds": 9.074,
+    "duration_seconds": 11.915,
+    "title": "One room. A shared job.",
+    "narration": "Meet PromiseKeeper. One Switch room brings you, a coordinator, and a builder together. You confirm the request. The agents do the work and check the result."
+  },
+  {
+    "start_seconds": 20.989,
+    "duration_seconds": 10.869,
+    "title": "Two columns. Three orders.",
+    "narration": "Here\u2019s the request: export three sample orders with order number and total only. The coordinator confirms the details before the builder starts."
+  },
+  {
+    "start_seconds": 31.859,
+    "duration_seconds": 12.281,
+    "title": "Extra fields. Caught.",
+    "narration": "For this demo, we start with a deliberately flawed export. It includes email and internal notes. The program runs, but the check catches those extra columns."
+  },
+  {
+    "start_seconds": 44.14,
+    "duration_seconds": 10.303,
+    "title": "A real handoff. A corrected file.",
+    "narration": "The coordinator sends the failure back through Switch. The builder fixes the exporter and generates a new file. The same checks now pass."
+  },
+  {
+    "start_seconds": 54.443,
+    "duration_seconds": 12.404,
+    "title": "You approve this version.",
+    "narration": "You inspect the file and approve that checked version. Its receipt connects your review to the exact file. In this prototype, review happens through a local command."
+  },
+  {
+    "start_seconds": 66.847,
+    "duration_seconds": 11.333,
+    "title": "New request. Fresh review.",
+    "narration": "Now add email to the request. PromiseKeeper records a new version and clears the old approval. The changed request needs a fresh check and review."
+  },
+  {
+    "start_seconds": 78.18,
+    "duration_seconds": 15.479,
+    "title": "Keep the request, work and review connected.",
+    "narration": "That\u2019s PromiseKeeper: a shared task with a verifiable result. Real agent handoffs through Switch, a human review step, and nine passing tests. A changed request never inherits an old approval."
+  }
+]

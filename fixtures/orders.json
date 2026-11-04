@@ -1,0 +1,5 @@
+[
+  {"order_number": "DEMO-101", "total": "49.00", "email": "one@example.test", "internal_notes": "Synthetic support note"},
+  {"order_number": "DEMO-102", "total": "75.50", "email": "two@example.test", "internal_notes": "Synthetic billing note"},
+  {"order_number": "DEMO-103", "total": "12.00", "email": "three@example.test", "internal_notes": "Synthetic account note"}
+]
