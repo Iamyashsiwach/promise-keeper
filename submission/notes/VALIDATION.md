@@ -1,3 +1,5 @@
+> Historical notes from the earlier single-human workflow. For the current workflow use [README](../../README.md) and [DEMO](../../DEMO.md).
+
 # Validation — November 5, 2026
 
 - Clean ZIP extraction: nine tests pass using Python's standard library.

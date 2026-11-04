@@ -1,111 +1,80 @@
 # PromiseKeeper
 
-A Switch Business Workflow prototype: agree on a customer export in chat, build it, verify the output, and review the exact version that passed.
+An AI agent tried to send a customer their own internal notes. PromiseKeeper caught it, and the person who asked couldn't sign off on it.
 
-[Watch the 94-second walkthrough](submission/promise-keeper-v2.mp4) · [Blog draft](submission/BLOG-DRAFT.md) · [Wispr usage evidence](submission/WISPR-USAGE.md)
+**The sign-off layer for AI agents in team chat.** The reproducible demo deliberately seeds a bad exporter using synthetic orders; no customer message is delivered.
 
-## Current status
+<!-- DEMO VIDEO -->
+**Demo video:** replace this placeholder with the new live two-person recording after completing [DEMO.md](DEMO.md). The earlier recording is documented in [historical provenance](submission/notes/VIDEO-PROVENANCE.md).
 
-Implemented and locally tested: a SQLite evidence ledger, CSV column/row-count checks, versioned agreements, verification receipts, approval invalidation, and a sample exporter using synthetic data.
+<!-- GIF -->
+**GIF:** add a crop of the actual approval → changed request → blocked sender sequence from that recording.
 
-A live Mattermost-backed Switch room and both agents are configured locally. The first live run completed: agreement, agent-to-agent handoff, failed export check, actual exporter fix, passing verification, local human review, then a requirement change clearing the old approval. The recorded ledger events are in `evidence/live-run.json`; they are not a substitute for a demo video or proof of authenticated chat approval. The sample exporter is now fixed for the original two-column agreement. This repository remains a prototype, not a completed hackathon submission.
+## The problem
 
-## Run locally
+Agents finish tasks quickly, but a finished task can still produce the wrong file.  
+The request, agreed scope and human sign-off live in chat and can drift apart.  
+A changed request must need fresh checks and a fresh data-owner review.
 
-Python 3.11+; no third-party packages.
+## How Switch is used
 
-```sh
-python3 -m unittest -v
-python3 promise_keeper.py --db .local/example.sqlite3 agree example --fields order_number total --rows 3 --request-ref 'local-example:not-a-switch-message'
-python3 export_orders.py --output .local/example.csv
-python3 promise_keeper.py --db .local/example.sqlite3 verify example .local/example.csv
-```
+| Story step | Switch feature carrying it |
+| --- | --- |
+| Sam asks; coordinator confirms exact columns/rows | Shared team room, room instructions, actual message authors and references |
+| Coordinator hands initial export and failed check to builder | Agent-to-agent @mentions in the same room |
+| Scope, rule and progress stay visible | Shared room documents: `signoff-rule`, `promise-decisions`, `export-task` |
+| Sam is refused; Priya signs the passing receipt | Direct human chat messages; coordinator records actual author/reference and checks local status |
+| Sender drafts against Priya's current approval | Room handoff to a third agent, which invokes the Python gate |
+| Sam changes scope; sender retracts its draft | New room agreement/reference, revision invalidation, addressed sender recheck and visible retraction notice |
+| A new team installs the workflow | One parameterized template defines all three agents, room, initial document and kickoff |
 
-These local-only commands use a separate example ledger and artifact; they do not replace the completed live run. The example reference is explicitly not a Switch message. For actual room operation, preserve the real confirmation reference.
+Without a shared team room there is no requester, no approver and no audit trail, so the workflow cannot exist. The Python checks can run separately for tests; Switch carries the collaborative workflow, not CSV parsing.
 
-In the first live run, the starting exporter included `email` and `internal_notes`; verification rejected that artifact with code 2, and the builder fixed the exporter. The failure and later receipts are preserved in the evidence file. To create an isolated copy of that starting state, run:
+The records above are **ordinary room documents**, not native Decisions/Tasks/Rules objects. See [confirmed Switch features and validation](submission/notes/SWITCH-VALIDATION.md).
 
-```sh
-python3 scripts/prepare_rehearsal.py ../promise-keeper-rehearsal
-```
+## Reproduce in 5 minutes
 
-The destination must not already exist. It contains an intentionally flawed exporter and no live ledger or credentials. Point separate Switch agents at that folder for a fresh demonstration. Its exporter regression test deliberately fails until the builder corrects it. Do not weaken the verifier merely to make an export pass.
+The five-minute target starts with Console, a connected chat workspace and a signed-in coding provider ready. A cold installation or agent response time can take longer.
 
-After a passing verification, the human reviewer inspects the file and runs:
+1. [Install Switch Console](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console), add a server, and sign in to your coding provider. Use Python 3.11+; this project needs no packages.
+2. Obtain this checkout. Create a fresh starting copy with `python3 scripts/prepare_rehearsal.py ../promise-rehearsal`. The destination must be new and outside this project; the exporter in it deliberately leaks extra columns. Keep all agents on that copy.
+3. Connect a real Slack or Discord workspace through Switch and invite a second person. You play Sam; they play Priya. Use their actual usernames, not the character names unless those are their accounts. See [chat setup](https://docs.switchagents.ai/switch-rooms/getting-started/index). The bridge must be connected before the template can create its room.
+4. In Console **Templates → Import template**, paste [switch-room.template.yaml](switch-room.template.yaml), save, then **Use template**. Choose a unique team prefix, connected bridge, actual requester/approver, online machine, installed provider and the **same absolute rehearsal directory for every agent**. Enable server agent management where required by [the template guide](https://docs.switchagents.ai/switch-rooms/administer/room-templates). Select **Create all**. One run creates three agents and their room, and posts a kickoff; importing alone only saves the template.
+5. Check both humans joined, all three agents can read the folder, and the coordinator can resolve actual authors/message refs and create its room documents. Paste the ordered messages from [DEMO.md](DEMO.md). Priya must inspect the actual file before approving. Missing context or permissions must stop the run.
 
-```sh
-python3 promise_keeper.py --db .local/example.sqlite3 approve example --receipt REPLACE_WITH_LATEST_RECEIPT --reviewer YOUR_REVIEWER_LABEL
-python3 promise_keeper.py --db .local/example.sqlite3 status example
-python3 promise_keeper.py --db .local/example.sqlite3 events example
-```
-
-Every `agree` command creates a new agreement revision. Every `verify` command creates a new receipt and revokes prior approval, even for identical bytes. Approval also checks the current artifact bytes against the verified hash. `status` rechecks the artifact and revokes approval if it is missing or changed.
-
-## Exact limits
-
-- Verification checks ordered column names, row shape, row count, and the artifact hash. It does **not** verify cell values against source orders or prove correctness beyond these checks.
-- The reviewer label and conversation reference are supplied by the caller, not authenticated. In the current demo the human executes approval in a terminal; do not claim approval is securely authorized through chat.
-- Agents and the local owner share a trusted workstation. Agent instructions are conventions, not an access-control boundary. SQLite and the verifier are not tamper-resistant against someone with filesystem access.
-- Artifact changes are detected when `verify`, `approve`, or `status` runs. There is no continuous watcher, and files are not immutable snapshots. Check status before drafting any customer update.
-- Live authenticated chat approvals and immutable artifacts are future work, not implemented features.
-
-## Set up the Switch workflow
-
-Follow the current [installation guide](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console) and [quickstart](https://docs.switchagents.ai/switch-rooms/getting-started/index).
-
-1. Run Docker Desktop for bundled Mattermost, install Switch Console, add a local server, and verify the AI provider is signed in.
-2. Register two agents called `promise-coordinator` and `promise-builder`. Set each one's directory to this project folder. Paste the corresponding brief from `agents/` into its agent instructions.
-3. Create one Mattermost-backed room named `promise-keeper`. Add both agents. Allow your own agents to address one another; the documented default is “Me and my agents”.
-4. Paste `agents/room-instructions.md` into the room instructions. Ask the agents to confirm they can read this README and list the actual commands available here.
-5. Dictate the first request from `DEMO.md`. Capture the real room/message reference in the agreement. Keep all work in that request's thread where supported.
-6. Import the included `switch-room.template.yaml` using Templates → Import template, or create the room manually. This file was captured from the actual working room and Switch's round-trip check reported it valid. It asks for a room name and existing agent names (`deploy_agent` is the builder; `agent_1` is the coordinator). It does not create agents. Its bridge is named `Mattermost`, participant is `user`, and room visibility is public within the local workspace: review those settings before using another server. Importing it on a fresh independent server has not been tested.
-
-Current agent onboarding instructions: [Onboard agents](https://docs.switchagents.ai/switch-rooms/getting-started/onboard-your-agents). Template guide: [Switch room templates](https://docs.switchagents.ai/switch-rooms/administer/room-templates).
+The template uses `addressing: anyone` so the second room member and agents can address each other. Keep this a dedicated room with trusted participants. The `win` work is local until published; the older public `main` checkout does not contain this version yet.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    H[Human request and confirmation] --> R[Switch room / Mattermost]
-    R --> C[Coordinator agent]
-    C -->|Actual room handoff| B[Builder agent]
-    B --> E[CSV exporter and local artifact]
-    C --> L[Python verifier and SQLite ledger]
-    E --> L
-    L -->|Receipt and result| C
-    C --> R
-    H -->|Local review command| L
+    Sam[Sam: requester] --> R[Switch team room]
+    Priya[Priya: data owner] --> R
+    R <--> C[Coordinator]
+    R <--> B[Builder]
+    R <--> S[Sender]
+    C -->|scope, refs, sign-off| L[(SQLite ledger)]
+    B --> F[Local CSV]
+    F --> V[CSV checks and hash]
+    V --> L
+    L --> G[Code gate: current approval + hash]
+    S --> G
+    G -->|exit 0 only| D[Local customer-message draft]
+    G -->|exit 3| X[Refuse / retract draft]
+    C --> Docs[Shared room documents]
+    Docs --> R
 ```
 
-Switch provides the actual collaborative path. The local verifier can also run independently for tests; the project does not claim that hashing or CSV parsing requires Switch.
+## Running the tests
 
-## Observed first run
+```sh
+python3 -m unittest -v
+```
 
-| Evidence | Result |
-| --- | --- |
-| Revision 1 | Confirmed two columns and three rows |
-| Receipt `1:1` | Failed: extra email and internal_notes |
-| Receipts `1:2`, then `1:3` | Corrected artifact passed; coordinator's receipt superseded builder's |
-| Local review | Reviewer recorded approval of `1:3` |
-| Revision 2 | Added email requirement; verification and approval cleared |
+Tests cover self-approval, designated data owner, redacted email/custom-pattern checks, receipt/hash changes, persisted events, CLI gate exits and sender retraction. Receipt `revision:generation` changes on every verification; don't re-verify after Priya signs. `gate` rechecks current bytes and approval and exits **3** if blocked. [Local CLI example](submission/notes/LOCAL-CLI.md) · [Validation and full output](submission/notes/VALIDATION-WIN.md).
 
-See `evidence/live-run.json`. The runtime verifier does not establish source-value accuracy; `test_export.py` separately checks the corrected sample exporter against the included fixture. Nine automated tests pass in the prepared project.
+## Limits
 
-## Submission materials
-
-- `START-HERE.md`: participant's plain-language guide and remaining actions.
-- `submission/promise-keeper-walkthrough.mp4`: 1:34 narrated walkthrough with English subtitles, using actual supplied room screenshots and saved ledger evidence. Not a new live screen recording. See `submission/VIDEO-PROVENANCE.md` for sources.
-- `submission/BLOG-DRAFT.md`: reviewed-facts blog draft; not published.
-- `submission/VIDEO-SCRIPT.md`: narration and shot list.
-- `submission/SUBMISSION.md`: project description, social draft, and remaining submission gates.
-- `submission/VALIDATION.md`: clean-extraction tests and verification results.
-
-## Submission strategy
-
-- Primary target: Best Business Workflow.
-- Wispr: the participant dictates real requests, instructions, feedback, and documentation during the build, then includes the actual Insights scorecard. Automated coding alone does not prove voice usage.
-- Blog: explain the real setup, failure, fix, and limitations with screenshots from the working room.
-- Social: use a short clip from the same demo; publishing requires the participant's authorization.
-- Track 3 issue #804: assignment was requested separately. It is optional and must not hold up this main workflow; no implementation started for that issue.
-
-No prize or eligibility outcome is guaranteed. Verify the submission form and current rules before entering.
+- Chat identity is trusted as Switch reports it. The coordinator passes actual author/ref to a local CLI; the CLI does not authenticate chat itself. Shared-workstation agents can edit files, so this is not an adversarial authorization boundary.
+- Runtime checks cover ordered columns, row shape/count, deny patterns and hash, not source-value accuracy or every kind of PII. Email detection stays active even when an email column is requested. New scope clears approval when recorded; artifact edits are detected on checks, not by a watcher.
+- Local prototype: sender gates a local draft and posts a retraction notice, with no external delivery or deletion of old messages. `evidence/live-run.json` and the old video come from an earlier single-human, two-agent run; they do not demonstrate the new two-human workflow.

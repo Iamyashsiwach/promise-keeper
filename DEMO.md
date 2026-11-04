@@ -1,42 +1,73 @@
-# Live demo and build checkpoints
+# Record the two-person sign-off story
 
-These are prompts for a real Switch room, not a transcript of work already performed.
+Use only the three synthetic fixture orders. Sam and Priya are roles played by two
+real people with distinct chat accounts. Default team prefix `promise` gives the
+mentions below; replace the prefix everywhere if you chose another one.
 
-The first live run is complete and preserved in `evidence/live-run.json`. The root exporter is now corrected. For another live rehearsal, first run `python3 scripts/prepare_rehearsal.py ../promise-keeper-rehearsal` with a new destination, then point separate agents at that copy. Never reset or overwrite the completed live ledger. The included video is a walkthrough of the recorded run, not a new execution.
+## Prepare off camera
 
-## First request — dictate using Wispr
+- Run tests in the corrected source checkout. Then run `python3 scripts/prepare_rehearsal.py ../promise-rehearsal` with a new directory name. That copy has the intentionally bad exporter and no ledger. Its exporter regression test will fail until the builder fixes it.
+- Import/use the template on a fresh Console server with a real connected chat app.
+  All agents must point to that SAME rehearsal folder. Use actual account usernames
+  for requester/approver. Confirm both people joined and provider/tool access works.
+- Kickoff must confirm actual identity/reference context, a shared readable folder,
+  `signoff-rule`, and coordinator-owned `promise-decisions`/`export-task` documents.
+  If these are missing, fix setup before recording; don't invent a successful run.
+- Have Priya ready to open `.local/export.csv` after the fix. This is local: share
+  screen or give her access to that actual synthetic file. The draft is never sent.
+- Frame the room so authors, mentions, receipts and changes are legible. Record the
+  real workflow; shorten waits with labelled cuts if needed. Do not prefill evidence.
 
-“@promise-coordinator I need a CSV export for our customer. Use the three synthetic orders in the project. Include order number and total only. Email addresses and internal notes must never appear. Ask me to confirm the agreement, then work with promise-builder to produce and verify the file.”
+## Exact live messages, in order
 
-Confirm the allowed fields as `order_number` and `total`, and the expected row count as 3. Record the actual Switch message reference.
+**1 — Sam:**
 
-## Show the failure
+> @promise-coordinator Create a customer CSV from all three sample orders. Include order_number and total only, in that order, with exactly three data rows. Never include email or internal notes. Ask me to confirm before starting. Only the designated data owner may approve it.
 
-The initial exporter deliberately outputs extra private columns. Have the agents actually run it and show the verifier's failure. The builder then changes the exporter, regenerates the CSV, and verifies again. Keep the verifier unchanged.
+Expected: coordinator restates scope, actual requester and actual designated owner,
+and asks for confirmation. No work starts before confirmation.
 
-## Review the passing version
+**2 — Sam, after checking that restatement:**
 
-Read the CSV yourself. Run the approve command with the actual latest receipt and your reviewer label, then have the coordinator run status. State in the demo that this is a local reviewer command, not authenticated chat approval.
+> @promise-coordinator Confirmed: order_number,total only, exactly three rows, no email or internal notes. Record revision 1 and begin.
 
-## Change the agreement
+Expected: actual author/ref stored; coordinator @mentions builder; builder runs
+unchanged exporter. Coordinator verifies once: normally `1:1`, exit 2, extra columns
+and redacted email row/column errors. Then @mentions builder to fix. Builder changes
+only exporter, regenerates, verifies once: normally `1:2`, passing. Coordinator uses
+status, not another verify. Shared room documents reflect actual scope and receipt.
 
-Dictate: “Change the request: include email too. Record this as a new revision, but don't approve or rebuild yet. Show whether my previous approval still applies.”
+**3 — Sam, once the passing receipt is visible:**
 
-The coordinator should confirm the changed fields, record a new revision, and show `needs-verification` with no approval. That is the primary versioning demonstration. It does not need to build the second export during the short video.
+> @promise-coordinator approve 1:2
 
-## Evidence to capture
+Use the ACTUAL passing receipt if it differs. Expected: code rejects this actual
+author as requester; one-line refusal in room; approval remains null.
 
-- Real person/agent conversation and handoff in Mattermost through Switch.
-- Failing verification and real exporter diff.
-- Passing receipt, human review, and current approved status.
-- New agreement revision with the earlier approval invalidated.
-- Actual elapsed time and number of human decisions; no invented time-saved or revenue claims.
-- Wispr Insights usage scorecard, excluding unrelated personal text.
+**4 — Priya inspects the actual CSV**, confirming three rows, exact header
+`order_number,total`, and appropriate synthetic values. She uses her own account:
 
-## Work order, November 5–7, 2026 (IST)
+> @promise-coordinator approve 1:2
 
-1. Nov 5: finish local Switch setup, create agents/room, and complete the first live run.
-2. Nov 6: fix integration issues; repeat from a fresh demo ledger; export the actual room template; capture evidence and draft README/blog.
-3. Nov 7: freeze features; verify a fresh checkout; record the short video; inspect the submission form; submit before the official 11:59 PM IST deadline, targeting 8 PM internally.
+Expected: approval stores her actual account identity and message ref. Coordinator
+checks status then @mentions sender with that receipt. Sender runs gate and
+`sender.py draft`, posts DRAFT and cites actual receipt. Show the gate output with
+approver, receipt, hash and reference; no invented names or references.
 
-Use a new `--db` path for a fresh rehearsal so you preserve earlier evidence. Do not present scripted test approvals as real human participation.
+**5 — Sam, after the draft is visible:**
+
+> @promise-coordinator Change my request: add email as the third column after order_number and total. Keep exactly three rows. I confirm this change. Record revision 2, but do not rebuild or approve anything. Show whether the old approval still applies and ask the sender to recheck its draft.
+
+Expected: coordinator records revision 2, verification and approval both null,
+status needs-verification. Email deny remains active. It immediately @mentions
+sender; sender runs `sender.py check`, gets exit 3, marks the local draft retracted
+and posts a new **RETRACTED** notice in the room. Do not delete the earlier draft.
+No revision-2 build, verification or approval. Finish on this blocked state.
+
+## If the story doesn't match
+
+Stop and show the real failure. A wrong receipt requires using the displayed receipt,
+not editing evidence or resetting counters. Self-approval unexpectedly succeeding,
+missing real author/reference mapping, or a sender drafting while blocked means
+stop and investigate before recording. An email-column request is not permission
+to disable the email deny rule. Do not call a scripted CLI rehearsal a live chat run.

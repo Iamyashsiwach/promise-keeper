@@ -1,55 +1,20 @@
-# PromiseKeeper — revised video script
+# Two-minute live demo shot list
 
-Runtime: approximately 1 minute 34 seconds. Synthetic neural male narration. Actual room excerpts plus editorial panels based on recorded evidence.
+Target edited runtime: 1:55. Record the real room and tool outputs first; use clearly
+labelled cuts to remove waits. These are planned shots, not claims of completed work.
+Two real people must participate. Keep names/receipts legible; no scrolling PII.
 
-## 1. Done isn’t the same as right.
+| Time | Show | Say |
+| --- | --- | --- |
+| 0:00–0:09 | Room title, two real humans, three agents | “An AI agent can finish a task and still make the wrong file. PromiseKeeper makes the team agree, check, and sign off.” |
+| 0:09–0:23 | Sam's request, coordinator's restatement and Sam's confirmation | “Sam wants three orders, with order number and total only. Switch keeps the confirmed scope and message reference in one room.” |
+| 0:23–0:42 | Coordinator @builder, seeded bad export, redacted failed verification | “The starting exporter deliberately includes private columns. The check catches the email by row and column without repeating its value.” |
+| 0:42–0:57 | @mention fix, builder's passing receipt, room documents | “The builder fixes the exporter. The decision and task records are shared room documents. This receipt identifies the checked version.” |
+| 0:57–1:10 | Sam's approve and actual refusal | “Sam asked for it, so Sam cannot approve it.” |
+| 1:10–1:28 | Priya checks file, approves from her account; approval author/ref | “Priya is the data owner. After reviewing the actual file, she signs this receipt. We record her actual message, not a name typed by an agent.” |
+| 1:28–1:40 | @sender handoff, gate exit 0, marked local DRAFT | “A third agent checks the code gate before preparing a message. This is a local draft, not customer delivery.” |
+| 1:40–1:55 | Sam's email change, revision 2, null approval, exit 3, RETRACTED | “Then Sam changes the scope. Old approval is gone. The sender retracts its draft. A changed request needs fresh checks and a fresh review.” |
 
-Start: 0.00s · Duration: 9.07s
-
-An AI can finish a task and still deliver the wrong thing. What matters is whether the result matches what you agreed to.
-
-## 2. One room. A shared job.
-
-Start: 9.07s · Duration: 11.91s
-
-Meet PromiseKeeper. One Switch room brings you, a coordinator, and a builder together. You confirm the request. The agents do the work and check the result.
-
-## 3. Two columns. Three orders.
-
-Start: 20.99s · Duration: 10.87s
-
-Here’s the request: export three sample orders with order number and total only. The coordinator confirms the details before the builder starts.
-
-## 4. Extra fields. Caught.
-
-Start: 31.86s · Duration: 12.28s
-
-For this demo, we start with a deliberately flawed export. It includes email and internal notes. The program runs, but the check catches those extra columns.
-
-## 5. A real handoff. A corrected file.
-
-Start: 44.14s · Duration: 10.30s
-
-The coordinator sends the failure back through Switch. The builder fixes the exporter and generates a new file. The same checks now pass.
-
-## 6. You approve this version.
-
-Start: 54.44s · Duration: 12.40s
-
-You inspect the file and approve that checked version. Its receipt connects your review to the exact file. In this prototype, review happens through a local command.
-
-## 7. New request. Fresh review.
-
-Start: 66.85s · Duration: 11.33s
-
-Now add email to the request. PromiseKeeper records a new version and clears the old approval. The changed request needs a fresh check and review.
-
-## 8. Keep the request, work and review connected.
-
-Start: 78.18s · Duration: 15.48s
-
-That’s PromiseKeeper: a shared task with a verifiable result. Real agent handoffs through Switch, a human review step, and nine passing tests. A changed request never inherits an old approval.
-
-## Editorial approach
-
-Use a short problem-first opening, plain-language narration, readable close-ups, and a visible review-state change. Keep receipt IDs as supporting on-screen evidence rather than reading them aloud. Refer to VIDEO-PROVENANCE.md for source and limitation details.
+End on the actual blocked gate and retraction notice, not an aspirational feature
+slide. Show `1:2` only if that is the actual receipt. Do not reuse the older movie as
+proof of this new workflow. Existing synthetic narration is not Wispr usage.

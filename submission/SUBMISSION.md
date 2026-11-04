@@ -1,56 +1,65 @@
-# Submission worksheet — draft, not submitted
+# Submission worksheet — new workflow not yet submitted
 
-## Ready-to-use project description
+**Project:** PromiseKeeper  
+**Target:** Best Business Workflow  
+**Tagline:** The sign-off layer for AI agents in team chat.
 
-**Name:** PromiseKeeper
+**Description:** A requester, an independent data owner and three agents collaborate
+in a Switch room to create a customer export. The coordinator records confirmed
+scope and actual chat references; the builder produces a deliberately flawed export,
+then fixes it after a redacted check fails. The requester cannot approve their own
+request. The designated data owner reviews the file and signs its current receipt.
+The sender's code gate allows a local message draft only against current approval.
+A changed requirement revokes approval and triggers a visible draft retraction.
 
-**Track:** Best Business Workflow
+**Switch:** Real room participants/authors, shared instructions and room documents,
+agent-to-agent @mentions, and a parameterized three-agent/room/kickoff template.
+Python/SQLite supplies deterministic checks and a receipt-bound gate. Records called
+rule/decision/task are ordinary room documents. No external customer delivery.
 
-**Tagline:** A changed request should never inherit an old approval.
+**Evidence status:** Core and sender tests pass; the template has offline Switch
+lint/parser validation. A fresh-server import and new two-human live run are still
+required. The older movie and `evidence/live-run.json` demonstrate the earlier
+single-human/two-agent workflow only. Do not submit them as proof of independent
+chat approval or the new sender. CLI trusts supplied identity/ref on a shared machine.
 
-**Short description:** PromiseKeeper brings a human, a coordinator agent, and a builder agent into a Switch room to turn an agreed customer export request into a verified artifact. The coordinator records exact columns and row scope, the builder produces and fixes the export, and deterministic checks reject results that violate the agreement. Human review refers to the latest verified version. Changing the request clears the earlier approval.
+## Publish-ready links still required
 
-**What we demonstrated:** A deliberately overbroad CSV failed verification; agents handed the failure back through Switch and corrected the exporter; the human reviewed a passing receipt; a subsequent requirement revision cleared verification and approval. The synthetic data and ledger evidence are included.
+- Repository: https://github.com/Iamyashsiwach/promise-keeper — currently older main;
+  publish the reviewed `win` changes only when authorized. No push in this task.
+- New live video: TODO — record [DEMO.md](../DEMO.md), <=2 minutes, then update README's video/GIF placeholders.
+- Tutorial: [BLOG-DRAFT.md](BLOG-DRAFT.md) — add real screenshots and publish; URL TODO.
+- Wispr: [original usage evidence](WISPR-USAGE.md) and [scorecard](media/wispr-insights.png).
+  No claim that all coding or the earlier chat run used dictation. Confirm current
+  event side-track requirements before filing.
+- #HowISwitch post URL: TODO.
 
-**How Switch is used:** Switch Console connects two Codex-powered agents to a Mattermost-backed room. It carries the human confirmation, agent handoffs, tool activity, and results. Agent and room briefs plus the captured room template are included. Python/SQLite handles local evidence and version checks; this project does not implement a new agent model or claim to add these checks to Switch core.
+## #HowISwitch draft — publish after the new live run
 
-**Limits:** Local trusted-workstation prototype. Caller-supplied reviewer label, not authenticated chat identity. Runtime verification checks columns, row shape/count and file hash, not source-value accuracy. No continuous monitoring, immutable artifacts, deployment, or automatic customer messaging.
+I built PromiseKeeper: the sign-off layer for AI agents in team chat.
 
-## Links to fill after review
+In one Switch room, three agents create and check a customer export. The requester
+can't approve their own request. A separate data owner reviews the file and signs
+its receipt. Change the request and the sender's code gate blocks the old draft.
 
-- [x] Public repository: https://github.com/Iamyashsiwach/promise-keeper
-- [x] Public video file: https://raw.githubusercontent.com/Iamyashsiwach/promise-keeper/main/submission/promise-keeper-v2.mp4 — anonymous HTTP 200 verified; direct downloadable file, not a dedicated streaming platform
-- [ ] Published blog URL, if entering Best Blog
-- [x] Actual Wispr Insights scorecard saved at `media/wispr-insights.png`; usage scope in `WISPR-USAGE.md`
-- [ ] Public #HowISwitch post URL, if entering that activity
+Built with Switch and Python. Synthetic data; local draft, no customer delivery.
 
-Public scorecard: https://github.com/Iamyashsiwach/promise-keeper/blob/main/submission/media/wispr-insights.png
-
-The blog is currently a public repository draft, not a separately published blog article. The hackathon form has not been submitted.
-
-## Submission gates
-
-- [ ] Participant registration and eligibility confirmed by the participant
-- [ ] Read the actual submission form and current rules; record additional required fields
-- [ ] Public repository contents reviewed for secrets, credentials, private data, and stale claims
-- [x] Room template exported from the live room; Switch round-trip check reports valid, server-specific inputs documented
-- [x] Draft narrated walkthrough created from real screenshots and saved evidence
-- [ ] Participant reviews video playback and approves the version to publish
-- [ ] Clean extraction validation result reviewed in VALIDATION.md
-- [ ] Participant reviews blog and social drafts before publication
-- [x] Wispr use documented as project explanation/blog dictation; original scorecard attached, no whole-build voice claim
-- [ ] Submit by November 7, 2026, 11:59 PM IST; internal target 8 PM IST
-
-Sources checked November 5, 2026: [event](https://www.wemakedevs.org/hackathons/switch), [schedule](https://www.wemakedevs.org/hackathons/switch/schedule), [rules](https://www.wemakedevs.org/hackathons/switch/rules).
-
-Multiple-track entry is allowed, but do not claim cumulative awards or assume one project can win both main workflow prizes. Track 3 issue #804 remains a separate optional effort; an assignment request alone is not a contribution.
-
-## Social draft — not published
-
-I built PromiseKeeper for the Flip the Switch Hackathon: a person and two AI agents work in a shared Switch room to produce a customer export, catch extra private columns, and verify the fix. Change the request, and the old approval is cleared.
-
-Built with Switch, Codex and Python. Demo uses synthetic data; review currently happens through a local CLI.
+[ADD REVIEWED REPO LINK] [ADD NEW LIVE DEMO LINK]
 
 #HowISwitch
 
-Add reviewed repo/video links before publishing. Mention Wispr only if the usage claim is accurate.
+## Ordered finish checklist
+
+- [ ] Confirm current event rules/form requirements and participant registration.
+- [ ] Connect real Slack/Discord and invite an actual second person as data owner.
+- [ ] Import/run the template on a fresh Console server; confirm documents and identities.
+- [ ] Rehearse DEMO.md from a new isolated copy; retain actual outcomes.
+- [ ] Record the new live video; add real screenshots to tutorial and README GIF.
+- [ ] Review changes, publish the new repository version when authorized, verify anonymous access.
+- [ ] Publish tutorial and #HowISwitch post; replace every TODO with a working public URL.
+- [ ] Attach the actual Wispr scorecard and an accurate usage description if entering.
+- [ ] Submit by **8 PM IST November 7, 2026** (internal target ahead of the stated deadline).
+
+The user's four requested criteria guide this review; equal weights and README/video-only
+judging are not asserted here as independently verified event rules. See the actual
+[event page](https://www.wemakedevs.org/hackathons/switch) before submitting.

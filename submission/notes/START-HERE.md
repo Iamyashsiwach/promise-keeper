@@ -1,3 +1,5 @@
+> Historical notes from the earlier single-human workflow. For the current workflow use [README](../../README.md) and [DEMO](../../DEMO.md).
+
 # PromiseKeeper: start here
 
 ## What this project does
@@ -12,15 +14,15 @@ The saved history is evidence of a local prototype, not authenticated identity o
 
 ## Open these files
 
-1. `submission/promise-keeper-walkthrough.mp4` — 1:34 narrated walkthrough using real chat screenshots and ledger evidence. Not a new live screen recording.
-2. `submission/BLOG-DRAFT.md` — blog draft, ready for review.
-3. `submission/SUBMISSION.md` — entry description, social draft, and remaining fields.
-4. `README.md` — setup, commands, architecture, evidence, and limitations.
+1. [old walkthrough](../promise-keeper-walkthrough.mp4) — 1:34 narrated walkthrough using real chat screenshots and ledger evidence. Not a new live screen recording.
+2. [current blog draft](../BLOG-DRAFT.md) — blog draft, ready for review.
+3. [current submission worksheet](../SUBMISSION.md) — entry description, social draft, and remaining fields.
+4. [current README](../../README.md) — setup, commands, architecture, evidence, and limitations.
 
 ## Still needed from the participant
 
 - The participant approved publishing the prepared repository, video, blog draft, and scorecard. They are now public at https://github.com/Iamyashsiwach/promise-keeper.
-- Wispr scorecard is now saved in `submission/media/wispr-insights.png`. Review the limited usage description in `submission/WISPR-USAGE.md`; the video's computer voice is separate from Wispr usage.
+- Wispr scorecard is now saved in [scorecard](../media/wispr-insights.png). Review the limited usage description in [Wispr usage](../WISPR-USAGE.md); the video's computer voice is separate from Wispr usage.
 - Confirm registration and eligibility, and review the actual submission form.
 - A standalone blog article, social post, and hackathon submission still need to be completed. Publishing the repository draft does not complete those steps.
 

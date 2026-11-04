@@ -1,3 +1,5 @@
+> Historical notes from the earlier single-human workflow. For the current workflow use [README](../../README.md) and [DEMO](../../DEMO.md).
+
 # Build status — November 5, 2026
 
 ## Completed
@@ -24,7 +26,7 @@
 
 ## Not complete
 
-The first live workflow demonstration is complete. The actual room template has been exported and its Switch round-trip check reports valid. A 1:34 narrated walkthrough with English subtitles, blog draft, video script, submission description, social draft, isolated rehearsal script, and ninth test for the actual exporter have been prepared. The rehearsal script refuses existing destinations and preserves the live ledger. All nine tests pass from a clean ZIP extraction. A review ZIP excludes local databases and caches; see submission/VALIDATION.md.
+The first live workflow demonstration is complete. The actual room template has been exported and its Switch round-trip check reports valid. A 1:34 narrated walkthrough with English subtitles, blog draft, video script, submission description, social draft, isolated rehearsal script, and ninth test for the actual exporter have been prepared. The rehearsal script refuses existing destinations and preserves the live ledger. All nine tests pass from a clean ZIP extraction. A review ZIP excludes local databases and caches; see [historical validation](VALIDATION.md).
 
 Still incomplete: participant review, authenticated chat approvals, standalone blog/social publication, and hackathon submission. The video uses real supplied chat screenshots and saved ledger evidence with machine narration; it is not a new live recording or proof of Wispr usage. No reward is guaranteed.
 
