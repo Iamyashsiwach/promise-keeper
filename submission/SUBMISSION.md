@@ -18,11 +18,15 @@
 
 ## Links to fill after review
 
-- [ ] Public repository URL
-- [ ] Accessible video URL, checked without relying on the submitter's login
+- [x] Public repository: https://github.com/Iamyashsiwach/promise-keeper
+- [x] Public video file: https://raw.githubusercontent.com/Iamyashsiwach/promise-keeper/main/submission/promise-keeper-v2.mp4 — anonymous HTTP 200 verified; direct downloadable file, not a dedicated streaming platform
 - [ ] Published blog URL, if entering Best Blog
 - [x] Actual Wispr Insights scorecard saved at `media/wispr-insights.png`; usage scope in `WISPR-USAGE.md`
 - [ ] Public #HowISwitch post URL, if entering that activity
+
+Public scorecard: https://github.com/Iamyashsiwach/promise-keeper/blob/main/submission/media/wispr-insights.png
+
+The blog is currently a public repository draft, not a separately published blog article. The hackathon form has not been submitted.
 
 ## Submission gates
 

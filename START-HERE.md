@@ -19,9 +19,9 @@ The saved history is evidence of a local prototype, not authenticated identity o
 
 ## Still needed from the participant
 
-- Review the video and blog before they are made public.
+- The participant approved publishing the prepared repository, video, blog draft, and scorecard. They are now public at https://github.com/Iamyashsiwach/promise-keeper.
 - Wispr scorecard is now saved in `submission/media/wispr-insights.png`. Review the limited usage description in `submission/WISPR-USAGE.md`; the video's computer voice is separate from Wispr usage.
 - Confirm registration and eligibility, and review the actual submission form.
-- Authorize the public repository, video upload, blog publication, and social post after reviewing their contents. None has been published or submitted by this package.
+- A standalone blog article, social post, and hackathon submission still need to be completed. Publishing the repository draft does not complete those steps.
 
 The primary target is Best Business Workflow. Blog, Wispr, and social activities are additional opportunities subject to the event's rules; awards are not guaranteed.

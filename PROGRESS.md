@@ -19,13 +19,15 @@
 1. Participant reviews the prepared 1:34 walkthrough, blog, submission description, and source package.
 2. Wispr Insights scorecard supplied and saved; project explanation/blog dictation scope documented in submission/WISPR-USAGE.md.
 3. Confirm registration and inspect the actual authenticated submission form for additional fields.
-4. Obtain publication authorization, then create the public repository, host the video, and publish the reviewed blog/social material.
-5. Complete the submission before the deadline. No external publication or submission has occurred yet.
+4. Public repository and downloadable video are published with participant authorization. Standalone blog/social publication remains.
+5. Complete the submission before the deadline. Repository publication is complete; the hackathon form has not been submitted.
 
 ## Not complete
 
 The first live workflow demonstration is complete. The actual room template has been exported and its Switch round-trip check reports valid. A 1:34 narrated walkthrough with English subtitles, blog draft, video script, submission description, social draft, isolated rehearsal script, and ninth test for the actual exporter have been prepared. The rehearsal script refuses existing destinations and preserves the live ledger. All nine tests pass from a clean ZIP extraction. A review ZIP excludes local databases and caches; see submission/VALIDATION.md.
 
-Still incomplete: participant review, authenticated chat approvals, public repository and video hosting, blog/social publication, and hackathon submission. The video uses real supplied chat screenshots and saved ledger evidence with machine narration; it is not a new live recording or proof of Wispr usage. No reward is guaranteed.
+Still incomplete: participant review, authenticated chat approvals, standalone blog/social publication, and hackathon submission. The video uses real supplied chat screenshots and saved ledger evidence with machine narration; it is not a new live recording or proof of Wispr usage. No reward is guaranteed.
 
 Wispr update: participant supplied an original Insights scorecard showing 105 total words and two AI prompts. Saved unedited with a limited usage statement; no claim that the whole build was dictated.
+
+Publication update: public repository https://github.com/Iamyashsiwach/promise-keeper created and pushed after explicit participant approval. Video, scorecard, and draft-blog files checked anonymously (HTTP 200). Local databases, caches, Finder metadata, and an obsolete duplicate subtitle file were excluded. Git uses the participant’s GitHub noreply address.

@@ -8,6 +8,6 @@
 - Packaging: excludes .local, SQLite files, Python caches, and Git metadata. A scan for common private-key and API-token patterns found no matches; this is not a comprehensive security audit.
 - Runtime remains a trusted-workstation prototype; local reviewer labels are not authenticated chat identity.
 
-No public hosting, publication, or hackathon submission has been performed. Participant review and actual Wispr scorecard are still needed.
+After participant authorization, the repository and prepared files were published at https://github.com/Iamyashsiwach/promise-keeper. Repository visibility is public, and anonymous requests to the video file, blog draft, and Wispr screenshot returned HTTP 200. The video is a downloadable MP4, not a dedicated streaming page. A real Wispr scorecard is included. Standalone blog/social publication and the hackathon submission remain outstanding.
 
 V2 media checks: full decode completed without errors; representative output frames inspected; AAC narration has measurable signal and no clipping (measured peak -4.4 dBFS). This is a technical check, not a claim of subjective voice approval.

@@ -9,4 +9,4 @@ Current files: `promise-keeper-v2.mp4` and `promise-keeper-walkthrough.mp4` cont
 - [Voice runtime and model download source](https://github.com/thewh1teagle/kokoro-onnx). The runtime is MIT licensed; its README identifies model weights as Apache 2.0. Model weights and voice files are not included in this package.
 - Output: 1920×1080, 30 fps, H.264/AAC, English subtitle track. `NARRATION-V2.md` contains the revised spoken script; `video-v2-timeline.json` has exact scene timings.
 - The earlier Mac-system-voice cut was preserved outside the submission package as an intermediate version.
-- Wispr Insights evidence is now saved separately in media/wispr-insights.png. Participant review, hosting, and submission remain outstanding.
+- Wispr Insights evidence is saved separately in media/wispr-insights.png. The participant authorized public repository publication, and the video and evidence files are now accessible from https://github.com/Iamyashsiwach/promise-keeper. The actual hackathon submission remains outstanding.
