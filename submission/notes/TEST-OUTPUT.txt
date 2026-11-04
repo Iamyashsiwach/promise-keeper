@@ -1,0 +1,30 @@
+test_exact_customer_projection_preserves_source_values (test_export.ExportTests.test_exact_customer_projection_preserves_source_values) ... ok
+test_approval_and_events_survive_restart (test_ledger.LedgerTests.test_approval_and_events_survive_restart) ... ok
+test_artifact_change_invalidates_approval_when_checked (test_ledger.LedgerTests.test_artifact_change_invalidates_approval_when_checked) ... ok
+test_cli_gate_exit_codes (test_ledger.LedgerTests.test_cli_gate_exit_codes) ... ok
+test_content_change_between_verification_and_approval_is_rejected (test_ledger.LedgerTests.test_content_change_between_verification_and_approval_is_rejected) ... ok
+test_custom_pattern_adds_to_email_policy (test_ledger.LedgerTests.test_custom_pattern_adds_to_email_policy) ... ok
+test_denied_header_is_redacted_even_when_requested (test_ledger.LedgerTests.test_denied_header_is_redacted_even_when_requested) ... ok
+test_designated_data_owner_is_enforced (test_ledger.LedgerTests.test_designated_data_owner_is_enforced) ... ok
+test_empty_identity_or_approval_reference_is_refused (test_ledger.LedgerTests.test_empty_identity_or_approval_reference_is_refused) ... ok
+test_gate_closes_after_agreement_or_artifact_change (test_ledger.LedgerTests.test_gate_closes_after_agreement_or_artifact_change) ... ok
+test_gate_refuses_old_draft_after_new_approval (test_ledger.LedgerTests.test_gate_refuses_old_draft_after_new_approval) ... ok
+test_independent_reviewer_records_message_reference (test_ledger.LedgerTests.test_independent_reviewer_records_message_reference) ... ok
+test_invalid_policy_does_not_replace_agreement (test_ledger.LedgerTests.test_invalid_policy_does_not_replace_agreement) ... ok
+test_legacy_approval_is_not_a_new_identity_checked_signoff (test_ledger.LedgerTests.test_legacy_approval_is_not_a_new_identity_checked_signoff) ... ok
+test_malformed_or_incomplete_export_fails (test_ledger.LedgerTests.test_malformed_or_incomplete_export_fails) ... ok
+test_missing_artifact_revokes_approval (test_ledger.LedgerTests.test_missing_artifact_revokes_approval) ... ok
+test_pii_in_allowed_column_is_redacted (test_ledger.LedgerTests.test_pii_in_allowed_column_is_redacted) ... ok
+test_pii_in_extra_cell_is_redacted (test_ledger.LedgerTests.test_pii_in_extra_cell_is_redacted) ... ok
+test_private_column_blocks_approval (test_ledger.LedgerTests.test_private_column_blocks_approval) ... ok
+test_requirement_revision_invalidates_old_receipt (test_ledger.LedgerTests.test_requirement_revision_invalidates_old_receipt) ... ok
+test_reverification_invalidates_prior_approval_and_receipt (test_ledger.LedgerTests.test_reverification_invalidates_prior_approval_and_receipt) ... ok
+test_self_approval_is_case_insensitively_refused (test_ledger.LedgerTests.test_self_approval_is_case_insensitively_refused) ... ok
+test_isolated_seeded_copy_and_existing_destination_refusal (test_rehearsal.RehearsalTests.test_isolated_seeded_copy_and_existing_destination_refusal) ... ok
+test_source_directory_is_refused (test_rehearsal.RehearsalTests.test_source_directory_is_refused) ... ok
+test_draft_requires_approval_and_retracts_on_revision (test_sender.SenderTests.test_draft_requires_approval_and_retracts_on_revision) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.310s
+
+OK

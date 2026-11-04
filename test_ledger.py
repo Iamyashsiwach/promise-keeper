@@ -105,6 +105,15 @@ class LedgerTests(unittest.TestCase):
         self.assertNotIn(private, json.dumps(result))
         self.assertNotIn(private, json.dumps(self.ledger.events('demo')))
 
+    def test_denied_header_is_redacted_even_when_requested(self):
+        private = 'customer.secret@example.test'
+        self.ledger.agree('demo', [private], 1, 'test/header', 'sam')
+        self.csv.write_text(f'{private}\nordinary-value\n')
+        result = self.ledger.verify('demo', self.csv)
+        self.assertFalse(result['passed'])
+        self.assertIn('row 1, column 1', ' '.join(result['errors']))
+        self.assertNotIn(private, json.dumps(result))
+
     def test_pii_in_extra_cell_is_redacted(self):
         private = 'customer.secret@example.test'
         self.csv.write_text(f'order_number,total\nDEMO-101,49.00,{private}\n')

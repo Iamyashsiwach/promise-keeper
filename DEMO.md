@@ -13,6 +13,9 @@ mentions below; replace the prefix everywhere if you chose another one.
 - Kickoff must confirm actual identity/reference context, a shared readable folder,
   `signoff-rule`, and coordinator-owned `promise-decisions`/`export-task` documents.
   If these are missing, fix setup before recording; don't invent a successful run.
+- Have Priya send `@promise-coordinator I am here and ready to review.` from her
+  own configured account during setup. Match the actual author to the configured
+  data-owner account; the sentence itself is not identity proof.
 - Have Priya ready to open `.local/export.csv` after the fix. This is local: share
   screen or give her access to that actual synthetic file. The draft is never sent.
 - Frame the room so authors, mentions, receipts and changes are legible. Record the

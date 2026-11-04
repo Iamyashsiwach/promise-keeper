@@ -46,6 +46,9 @@ def inspect_csv(path, fields, expected_rows, deny_patterns=None):
         reader = csv.DictReader(io.StringIO(data.decode('utf-8-sig'), newline=''))
         if reader.fieldnames != fields:
             errors.append('CSV columns do not match the agreed names and order.')
+        for column_number, header in enumerate(reader.fieldnames or [], 1):
+            if any(pattern.search(header) for pattern in patterns):
+                errors.append(f'Denied content at row 1, column {column_number} (<redacted header>).')
         rows = list(reader)
         if any(None in row or any(v is None for v in row.values()) for row in rows):
             errors.append('CSV contains malformed rows.')
