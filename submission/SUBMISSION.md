@@ -25,14 +25,13 @@ chat approval or the new sender. CLI trusts supplied identity/ref on a shared ma
 
 ## Publish-ready links still required
 
-- Repository: https://github.com/Iamyashsiwach/promise-keeper — currently older main;
-  publish the reviewed `win` changes only when authorized. No push in this task.
-- New live video: TODO — record [DEMO.md](../DEMO.md), <=2 minutes, then update README's video/GIF placeholders.
-- Tutorial: [BLOG-DRAFT.md](BLOG-DRAFT.md) — add real screenshots and publish; URL TODO.
+- Repository: [PromiseKeeper](https://github.com/Iamyashsiwach/promise-keeper).
+- New live video: pending recording of [DEMO.md](../DEMO.md), at most two minutes. Add its public URL and an actual GIF to README after recording.
+- Tutorial: [BLOG-DRAFT.md](BLOG-DRAFT.md) — pending real screenshots and publication; no published article URL yet.
 - Wispr: [original usage evidence](WISPR-USAGE.md) and [scorecard](media/wispr-insights.png).
   No claim that all coding or the earlier chat run used dictation. Confirm current
   event side-track requirements before filing.
-- #HowISwitch post URL: TODO.
+- #HowISwitch post: pending publication; no public URL yet.
 
 ## #HowISwitch draft — publish after the new live run
 
@@ -44,7 +43,9 @@ its receipt. Change the request and the sender's code gate blocks the old draft.
 
 Built with Switch and Python. Synthetic data; local draft, no customer delivery.
 
-[ADD REVIEWED REPO LINK] [ADD NEW LIVE DEMO LINK]
+Repository: https://github.com/Iamyashsiwach/promise-keeper
+
+Add the new live demo URL before publishing this post.
 
 #HowISwitch
 
@@ -55,8 +56,8 @@ Built with Switch and Python. Synthetic data; local draft, no customer delivery.
 - [ ] Import/run the template on a fresh Console server; confirm documents and identities.
 - [ ] Rehearse DEMO.md from a new isolated copy; retain actual outcomes.
 - [ ] Record the new live video; add real screenshots to tutorial and README GIF.
-- [ ] Review changes, publish the new repository version when authorized, verify anonymous access.
-- [ ] Publish tutorial and #HowISwitch post; replace every TODO with a working public URL.
+- [ ] Verify the updated default branch and public repository access after publication.
+- [ ] Publish tutorial and #HowISwitch post; record the working public URLs here.
 - [ ] Attach the actual Wispr scorecard and an accurate usage description if entering.
 - [ ] Submit by **8 PM IST November 7, 2026** (internal target ahead of the stated deadline).
 

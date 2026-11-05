@@ -4,12 +4,6 @@ An AI agent tried to send a customer their own internal notes. PromiseKeeper cau
 
 **The sign-off layer for AI agents in team chat.** The reproducible demo deliberately seeds a bad exporter using synthetic orders; no customer message is delivered.
 
-<!-- DEMO VIDEO -->
-**Demo video:** replace this placeholder with the new live two-person recording after completing [DEMO.md](DEMO.md). The earlier recording is documented in [historical provenance](submission/notes/VIDEO-PROVENANCE.md).
-
-<!-- GIF -->
-**GIF:** add a crop of the actual approval → changed request → blocked sender sequence from that recording.
-
 ## The problem
 
 Agents finish tasks quickly, but a finished task can still produce the wrong file.  
@@ -34,15 +28,13 @@ The records above are **ordinary room documents**, not native Decisions/Tasks/Ru
 
 ## Reproduce in 5 minutes
 
-The five-minute target starts with Console, a connected chat workspace and a signed-in coding provider ready. A cold installation or agent response time can take longer.
+1. [Install Switch Console](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console), add a server, and sign in to your coding provider.
+2. Clone this repository, then run `python3 scripts/prepare_rehearsal.py ../promise-rehearsal` to create a fresh starting copy.
+3. Connect Slack or Discord and invite a second person: you request the export; they review it.
+4. Import [switch-room.template.yaml](switch-room.template.yaml), select **Use template**, fill in both usernames and the same rehearsal directory for all agents, then select **Create all**.
+5. Open the new room and follow [DEMO.md](DEMO.md), including the independent review and changed-request check.
 
-1. [Install Switch Console](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console), add a server, and sign in to your coding provider. Use Python 3.11+; this project needs no packages.
-2. Obtain this checkout. Create a fresh starting copy with `python3 scripts/prepare_rehearsal.py ../promise-rehearsal`. The destination must be new and outside this project; the exporter in it deliberately leaks extra columns. Keep all agents on that copy.
-3. Connect a real Slack or Discord workspace through Switch and invite a second person. You play Sam; they play Priya. Use their actual usernames, not the character names unless those are their accounts. See [chat setup](https://docs.switchagents.ai/switch-rooms/getting-started/index). The bridge must be connected before the template can create its room.
-4. In Console **Templates → Import template**, paste [switch-room.template.yaml](switch-room.template.yaml), save, then **Use template**. Choose a unique team prefix, connected bridge, actual requester/approver, online machine, installed provider and the **same absolute rehearsal directory for every agent**. Enable server agent management where required by [the template guide](https://docs.switchagents.ai/switch-rooms/administer/room-templates). Select **Create all**. One run creates three agents and their room, and posts a kickoff; importing alone only saves the template.
-5. Check both humans joined, all three agents can read the folder, and the coordinator can resolve actual authors/message refs and create its room documents. Paste the ordered messages from [DEMO.md](DEMO.md). Priya must inspect the actual file before approving. Missing context or permissions must stop the run.
-
-The template uses `addressing: anyone` so the second room member and agents can address each other. Keep this a dedicated room with trusted participants. The `win` work is local until published; the older public `main` checkout does not contain this version yet.
+[Prerequisites and detailed setup](submission/notes/SETUP-DETAILS.md).
 
 ## Architecture
 

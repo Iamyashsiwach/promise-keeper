@@ -23,8 +23,7 @@ are roles, not extra accounts for you to impersonate. Record the actual username
 
 ## 2. Prepare the starting project
 
-Use the reviewed `win` checkout until it is published; the current public main is
-the older workflow. Once the reviewed version is published, clone that version:
+Clone the repository and prepare an isolated starting copy:
 
 ```sh
 git clone https://github.com/Iamyashsiwach/promise-keeper.git
