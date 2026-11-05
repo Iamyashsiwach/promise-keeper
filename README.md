@@ -69,4 +69,4 @@ Tests cover self-approval, designated data owner, redacted email/custom-pattern 
 
 - Chat identity is trusted as Switch reports it. The coordinator passes actual author/ref to a local CLI; the CLI does not authenticate chat itself. Shared-workstation agents can edit files, so this is not an adversarial authorization boundary.
 - Runtime checks cover ordered columns, row shape/count, deny patterns and hash, not source-value accuracy or every kind of PII. Email detection stays active even when an email column is requested. New scope clears approval when recorded; artifact edits are detected on checks, not by a watcher.
-- Local prototype: sender gates a local draft and posts a retraction notice, with no external delivery or deletion of old messages. `evidence/live-run.json` and the old video come from an earlier single-human, two-agent run; they do not demonstrate the new two-human workflow.
+- Local prototype: sender gates a local draft and posts a retraction notice, with no external delivery or deletion of old messages. `evidence/live-run.json` records an earlier single-human, two-agent run; it does not demonstrate the new two-human workflow.

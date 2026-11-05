@@ -61,6 +61,4 @@ Add the new live demo URL before publishing this post.
 - [ ] Attach the actual Wispr scorecard and an accurate usage description if entering.
 - [ ] Submit by **8 PM IST November 7, 2026** (internal target ahead of the stated deadline).
 
-The user's four requested criteria guide this review; equal weights and README/video-only
-judging are not asserted here as independently verified event rules. See the actual
-[event page](https://www.wemakedevs.org/hackathons/switch) before submitting.
+Check the current [event requirements](https://www.wemakedevs.org/hackathons/switch) and submission form before filing.
