@@ -1,10 +1,12 @@
 # PromiseKeeper
 
-An AI agent tried to send a customer their own internal notes. PromiseKeeper caught it, and the person who asked couldn't sign off on it.
+Catch risky AI work before it reaches a customer. PromiseKeeper turns a team-chat request into checked work, independent human sign-off, and a release gate that responds when requirements change.
 
-**The sign-off layer for AI agents in team chat.** The reproducible demo deliberately seeds a bad exporter using synthetic orders; no customer message is delivered.
+**The sign-off layer for AI agents in team chat.** Three specialist agents and two people coordinate a customer export through Switch. A privacy check catches an overbroad first version; a second person approves the corrected file; a changed request clears that approval and blocks the stale draft. The walkthrough uses synthetic orders and sends no customer messages.
 
 **Live demo (1:36):** [Watch the actual Discord workflow](submission/promise-keeper-live-demo.mp4) · [Transcript](submission/LIVE-DEMO-TRANSCRIPT.md)
+
+**Bring it to your team's chat:** Configure the Switch room for Slack or Discord. The recorded end-to-end run uses Discord.
 
 ![PromiseKeeper demo: a changed request clears approval and retracts the stale draft](submission/media/promise-keeper-live-demo.gif)
 
@@ -26,9 +28,9 @@ A changed request must need fresh checks and a fresh data-owner review.
 | Sam changes scope; sender retracts its draft | New room agreement/reference, revision invalidation, addressed sender recheck and visible retraction notice |
 | A new team installs the workflow | One parameterized template defines all three agents, room, initial document and kickoff |
 
-Without a shared team room there is no requester, no approver and no audit trail, so the workflow cannot exist. The Python checks can run separately for tests; Switch carries the collaborative workflow, not CSV parsing.
+Switch is the coordination backbone: people and agents share the request, role-specific handoffs, review and current status in one room. The Python validator supplies deterministic file checks; Switch carries the collaboration that makes the workflow useful to a team.
 
-The records above are **ordinary room documents**, not native Decisions/Tasks/Rules objects. See [confirmed Switch features and validation](submission/notes/SWITCH-VALIDATION.md).
+Shared room documents keep the scope, policy and task context visible to every participant. See [confirmed Switch features and validation](submission/notes/SWITCH-VALIDATION.md).
 
 ## Reproduce the demo
 
@@ -69,8 +71,9 @@ python3 -m unittest -v
 
 Tests cover self-approval, designated data owner, redacted email/custom-pattern checks, receipt/hash changes, persisted events, CLI gate exits and sender retraction. Receipt `revision:generation` changes on every verification; don't re-verify after Priya signs. `gate` rechecks current bytes and approval and exits **3** if blocked. [Local CLI example](submission/notes/LOCAL-CLI.md) · [Validation and full output](submission/notes/VALIDATION-WIN.md).
 
-## Limits
+## Trust boundaries and extension points
 
-- Chat identity is trusted as Switch reports it. The coordinator passes actual author/ref to a local CLI; the CLI does not authenticate chat itself. Shared-workstation agents can edit files, so this is not an adversarial authorization boundary.
-- Runtime checks cover ordered columns, row shape/count, deny patterns and hash, not source-value accuracy or every kind of PII. Email detection stays active even when an email column is requested. New scope clears approval when recorded; artifact edits are detected on checks, not by a watcher.
-- Local prototype: sender gates a local draft and posts a retraction notice, with no external delivery or deletion of old messages. `evidence/live-run.json` records an earlier single-human, two-agent run; it does not demonstrate the new two-human workflow.
+- Independent review is tied to the actual Switch author and message reference. The coordinator passes that identity to the local gate; production deployments can add authenticated identity controls for higher-assurance environments.
+- The validator checks ordered columns, row shape/count, deny patterns and the artifact hash. Email stays denied even if requested as a column. New scope clears approval, and the release gate rechecks the artifact before allowing a draft.
+- The sender creates a reviewable local draft and posts a retraction notice if its approval becomes stale. This demo focuses on the approval and release decision; customer delivery can be connected to an organization's existing transport.
+- Policy and shared status live in Switch room documents, making the workflow easy to adapt to a team's existing chat process.

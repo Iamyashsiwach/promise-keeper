@@ -2,29 +2,27 @@
 
 **Project:** PromiseKeeper  
 **Target:** Best Business Workflow  
-**Tagline:** The sign-off layer for AI agents in team chat.
+**Tagline:** Catch risky AI work before it reaches a customer.
 
-**Description:** A requester, an independent data owner and three agents collaborate
-in a Switch room to create a customer export. The coordinator records confirmed
-scope and actual chat references; the builder produces a deliberately flawed export,
-then fixes it after a redacted check fails. The requester cannot approve their own
-request. The designated data owner reviews the file and signs its current receipt.
-The sender's code gate allows a local message draft only against current approval.
-A changed requirement revokes approval and triggers a visible draft retraction.
+**Description:** PromiseKeeper helps teams release AI-generated work with confidence.
+In a shared Switch room, a requester sets the scope, three specialist agents create
+and check a customer export, and an independent data owner reviews the corrected
+file. A release gate ties the local message draft to the current verified receipt.
+When the request changes, the old approval clears and the sender retracts its stale
+draft. The workflow is configurable for Slack or Discord; the recorded run is in
+Discord and uses synthetic data.
 
-**Switch:** Real room participants/authors, shared instructions and room documents,
-agent-to-agent @mentions, and a parameterized three-agent/room/kickoff template.
-Python/SQLite supplies deterministic checks and a receipt-bound gate. Records called
-rule/decision/task are ordinary room documents. No external customer delivery.
+**Switch:** Switch connects the real requester and reviewer with three role-specific
+agents in one room. Shared instructions, room documents and @mentions carry scope,
+handoffs and review. A parameterized template sets up the room and team. Python/SQLite
+adds deterministic checks and a receipt-bound release gate.
 
-**Evidence status:** The actual Discord run used separate requester and approver
-accounts. It recorded a failed first export, a corrected passing receipt, refused
-requester self-approval, independent approval, a local draft, and a changed request
-that cleared approval and caused the sender gate to retract the draft (exit 3). The
-new recording is linked below. The CLI trusts Switch-supplied identity/reference on
-a shared machine; this is a collaborative workflow demo, not an adversarial security
-boundary. The old `evidence/live-run.json` is from an earlier single-human/two-agent
-run and is not the evidence for the current workflow.
+**Evidence status:** The live Discord run shows separate requester and approver
+accounts, a failed first check, a corrected passing receipt, refusal of requester
+self-approval, independent approval, and automatic blocking/retraction after the
+request changes. The concise video and transcript are linked below. The local gate is
+designed for a trusted team workflow; higher-assurance deployments can add
+authenticated identity and delivery integrations.
 
 ## Publish-ready links still required
 

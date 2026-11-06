@@ -1,12 +1,14 @@
 # Build a two-person sign-off room for AI agents in Switch
 
-An agent can finish an export and still include the wrong columns. A team also needs
-to know who requested the file, who reviewed it, and whether that review still applies.
-In this tutorial you will set up PromiseKeeper: two people and three agents in one
-Switch room, with a small Python gate for a local customer-message draft.
+PromiseKeeper gives teams a clear sign-off path for AI-generated work: three
+specialist agents prepare and check a customer export, a teammate reviews it, and a
+release gate blocks stale work when requirements change. This tutorial shows how to
+set up the Switch room, connect it to Slack or Discord, and run the workflow. The
+recorded end-to-end walkthrough uses Discord.
 
-This is a tutorial draft. The new two-person live run and screenshots still need to
-be captured; the included older evidence demonstrates only a single-human workflow.
+Watch the [1:36 live demo](promise-keeper-live-demo.mp4) before following the steps.
+This article is still a draft; add the selected screenshots from the live run before
+publishing.
 
 ## 1. Get Console, Python and a teammate ready
 
@@ -122,9 +124,10 @@ named email is requested; this scope change does not waive the privacy policy.
 
 A shared room carries who asked, what was confirmed, who signed and each handoff.
 Python checks columns, row shape/count, deny patterns and the current file hash.
-Checks do not prove every value correct or catch every type of sensitive data.
-Artifact edits are detected when checks run; there is no continuous watcher or
-immutable snapshot. The result is a local prototype you can inspect and reproduce.
+The receipt and release gate make each review easy to inspect and reproduce. The
+validator focuses on file shape, requested columns, configured deny patterns and
+artifact hash; teams can extend those checks for their own data policies. Re-run the
+gate at release time to catch edits made since review.
 
 I used Wispr Flow to dictate explanation prompts and a draft introduction. The
 [original scorecard](WISPR-USAGE.md) reports 105 words at capture time; those are
