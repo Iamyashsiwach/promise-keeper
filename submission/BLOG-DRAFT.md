@@ -1,4 +1,4 @@
-# Build a two-person sign-off room for AI agents in Switch
+# Build a 3-agent workflow with human sign-off in Switch
 
 PromiseKeeper gives teams a clear sign-off path for AI-generated work: three
 specialist agents prepare and check a customer export, a teammate reviews it, and a
