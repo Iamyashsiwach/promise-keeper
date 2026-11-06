@@ -17,23 +17,26 @@ agent-to-agent @mentions, and a parameterized three-agent/room/kickoff template.
 Python/SQLite supplies deterministic checks and a receipt-bound gate. Records called
 rule/decision/task are ordinary room documents. No external customer delivery.
 
-**Evidence status:** Core and sender tests pass; the template has offline Switch
-lint/parser validation. A fresh-server import and new two-human live run are still
-required. The older movie and `evidence/live-run.json` demonstrate the earlier
-single-human/two-agent workflow only. Do not submit them as proof of independent
-chat approval or the new sender. CLI trusts supplied identity/ref on a shared machine.
+**Evidence status:** The actual Discord run used separate requester and approver
+accounts. It recorded a failed first export, a corrected passing receipt, refused
+requester self-approval, independent approval, a local draft, and a changed request
+that cleared approval and caused the sender gate to retract the draft (exit 3). The
+new recording is linked below. The CLI trusts Switch-supplied identity/reference on
+a shared machine; this is a collaborative workflow demo, not an adversarial security
+boundary. The old `evidence/live-run.json` is from an earlier single-human/two-agent
+run and is not the evidence for the current workflow.
 
 ## Publish-ready links still required
 
 - Repository: [PromiseKeeper](https://github.com/Iamyashsiwach/promise-keeper).
-- New live video: pending recording of [DEMO.md](../DEMO.md), at most two minutes. Add its public URL and an actual GIF to README after recording.
+- New live video: [actual Discord workflow (1:36)](promise-keeper-live-demo.mp4); [GIF](media/promise-keeper-live-demo.gif); [transcript](LIVE-DEMO-TRANSCRIPT.md). The video and GIF are served from the public repository after these files are pushed.
 - Tutorial: [BLOG-DRAFT.md](BLOG-DRAFT.md) — pending real screenshots and publication; no published article URL yet.
 - Wispr: [original usage evidence](WISPR-USAGE.md) and [scorecard](media/wispr-insights.png).
   No claim that all coding or the earlier chat run used dictation. Confirm current
   event side-track requirements before filing.
 - #HowISwitch post: pending publication; no public URL yet.
 
-## #HowISwitch draft — publish after the new live run
+## #HowISwitch draft — publish with the live demo link
 
 I built PromiseKeeper: the sign-off layer for AI agents in team chat.
 
@@ -45,18 +48,17 @@ Built with Switch and Python. Synthetic data; local draft, no customer delivery.
 
 Repository: https://github.com/Iamyashsiwach/promise-keeper
 
-Add the new live demo URL before publishing this post.
+Live demo: https://github.com/Iamyashsiwach/promise-keeper/blob/main/submission/promise-keeper-live-demo.mp4
 
 #HowISwitch
 
 ## Ordered finish checklist
 
 - [ ] Confirm current event rules/form requirements and participant registration.
-- [ ] Connect real Slack/Discord and invite an actual second person as data owner.
-- [ ] Import/run the template on a fresh Console server; confirm documents and identities.
-- [ ] Rehearse DEMO.md from a new isolated copy; retain actual outcomes.
-- [ ] Record the new live video; add real screenshots to tutorial and README GIF.
-- [ ] Verify the updated default branch and public repository access after publication.
+- [x] Connect Discord and invite an actual second person as data owner; verify distinct author identities.
+- [x] Run the template and full workflow with two human accounts, including refusal, approval and stale-draft retraction.
+- [x] Record the live workflow video (1:36) and create a GIF.
+- [ ] Push the final video, GIF and README links; verify the default branch and public access.
 - [ ] Publish tutorial and #HowISwitch post; record the working public URLs here.
 - [ ] Attach the actual Wispr scorecard and an accurate usage description if entering.
 - [ ] Submit by **8 PM IST November 7, 2026** (internal target ahead of the stated deadline).

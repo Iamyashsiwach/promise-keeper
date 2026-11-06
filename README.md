@@ -4,6 +4,10 @@ An AI agent tried to send a customer their own internal notes. PromiseKeeper cau
 
 **The sign-off layer for AI agents in team chat.** The reproducible demo deliberately seeds a bad exporter using synthetic orders; no customer message is delivered.
 
+**Live demo (1:36):** [Watch the actual Discord workflow](submission/promise-keeper-live-demo.mp4) · [Transcript](submission/LIVE-DEMO-TRANSCRIPT.md)
+
+![PromiseKeeper demo: a changed request clears approval and retracts the stale draft](submission/media/promise-keeper-live-demo.gif)
+
 ## The problem
 
 Agents finish tasks quickly, but a finished task can still produce the wrong file.  
@@ -26,15 +30,15 @@ Without a shared team room there is no requester, no approver and no audit trail
 
 The records above are **ordinary room documents**, not native Decisions/Tasks/Rules objects. See [confirmed Switch features and validation](submission/notes/SWITCH-VALIDATION.md).
 
-## Reproduce in 5 minutes
+## Reproduce the demo
 
-1. [Install Switch Console](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console), add a server, and sign in to your coding provider.
-2. Clone this repository, then run `python3 scripts/prepare_rehearsal.py ../promise-rehearsal` to create a fresh starting copy.
-3. Connect Slack or Discord and invite a second person: you request the export; they review it.
-4. Import [switch-room.template.yaml](switch-room.template.yaml), select **Use template**, fill in both usernames and the same rehearsal directory for all agents, then select **Create all**.
-5. Open the new room and follow [DEMO.md](DEMO.md), including the independent review and changed-request check.
+1. Install [Switch Console](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console) and connect a server.
+2. Clone this repository and prepare a clean copy with `python3 scripts/prepare_rehearsal.py ../promise-rehearsal`.
+3. Connect Discord or Slack and invite a second person to review the export.
+4. Import [the room template](switch-room.template.yaml); set both real usernames and one shared rehearsal folder for all agents.
+5. Create the team, then follow [DEMO.md](DEMO.md) through review and a changed request.
 
-[Prerequisites and detailed setup](submission/notes/SETUP-DETAILS.md).
+Allow extra time for installing Console and connecting a chat server. See [detailed setup](submission/notes/SETUP-DETAILS.md).
 
 ## Architecture
 
