@@ -58,7 +58,7 @@ Live demo: https://github.com/Iamyashsiwach/promise-keeper/blob/main/submission/
 - [x] Connect Discord and invite an actual second person as data owner; verify distinct author identities.
 - [x] Run the template and full workflow with two human accounts, including refusal, approval and stale-draft retraction.
 - [x] Record the live workflow video (1:36) and create a GIF.
-- [x] Push the final video, GIF and README links to `main`; verify the remote branch points to commit `0df3a8b`.
+- [x] Push the final video, GIF and README links to `main`; verify the remote branch points to commit `d5563ae`.
 - [ ] Publish tutorial and #HowISwitch post; record the working public URLs here.
 - [ ] Attach the actual Wispr scorecard and an accurate usage description if entering.
 - [ ] Submit by **8 PM IST November 7, 2026** (internal target ahead of the stated deadline).
