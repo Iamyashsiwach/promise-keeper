@@ -1,7 +1,7 @@
-# Submission worksheet — new workflow not yet submitted
+# PromiseKeeper — hackathon submission details
 
 **Project:** PromiseKeeper  
-**Target:** Best Business Workflow  
+**Tracks:** Best Business Workflow; Best Core Contribution (PR #1519)
 **Tagline:** Catch risky AI work before it reaches a customer.
 
 **Description:** PromiseKeeper helps teams release AI-generated work with confidence.
@@ -27,12 +27,11 @@ authenticated identity and delivery integrations.
 ## Publish-ready links still required
 
 - Repository: [PromiseKeeper](https://github.com/Iamyashsiwach/promise-keeper).
-- New live video: [actual Discord workflow (1:36)](promise-keeper-live-demo.mp4); [GIF](media/promise-keeper-live-demo.gif); [transcript](LIVE-DEMO-TRANSCRIPT.md). These assets are pushed on `main`.
-- Tutorial: [BLOG-DRAFT.md](BLOG-DRAFT.md) — pending real screenshots and publication; no published article URL yet.
-- Wispr: [original usage evidence](WISPR-USAGE.md) and [scorecard](media/wispr-insights.png).
-  No claim that all coding or the earlier chat run used dictation. Confirm current
-  event side-track requirements before filing.
-- #HowISwitch post: pending publication; no public URL yet.
+- Track 3 contribution: [Switch PR #1519](https://github.com/sandbox-quantum/switch/pull/1519).
+- Demo: [actual Discord workflow (1:36)](promise-keeper-live-demo.mp4); [GIF](media/promise-keeper-live-demo.gif); [transcript](LIVE-DEMO-TRANSCRIPT.md). Upload the MP4 to YouTube or Loom and use its public/unlisted watch link in the form.
+- Best Blog: [tutorial draft](BLOG-DRAFT.md). Publish it and paste its public link to enter the blog prize.
+- Code with Wispr: [usage details](WISPR-USAGE.md); upload [the Insights scorecard](media/wispr-insights.png) in Track Details.
+- #HowISwitch: add the public social post link to the form when posted.
 
 ## #HowISwitch draft — publish with the live demo link
 
@@ -50,15 +49,15 @@ Live demo: https://github.com/Iamyashsiwach/promise-keeper/blob/main/submission/
 
 #HowISwitch
 
-## Ordered finish checklist
+## Finish checklist
 
-- [ ] Confirm current event rules/form requirements and participant registration.
+- [ ] Complete the event form with project and contributor details.
 - [x] Connect Discord and invite an actual second person as data owner; verify distinct author identities.
 - [x] Run the template and full workflow with two human accounts, including refusal, approval and stale-draft retraction.
 - [x] Record the live workflow video (1:36) and create a GIF.
 - [x] Push the final video, GIF and README links to `main`; verify the remote `main` branch contains them.
-- [ ] Publish tutorial and #HowISwitch post; record the working public URLs here.
-- [ ] Attach the actual Wispr scorecard and an accurate usage description if entering.
+- [ ] Publish the tutorial and #HowISwitch post; add their public links.
+- [ ] Upload the Wispr scorecard so the submission is considered for Code with Wispr.
 - [ ] Submit by **8 PM IST November 7, 2026** (internal target ahead of the stated deadline).
 
 Check the current [event requirements](https://www.wemakedevs.org/hackathons/switch) and submission form before filing.

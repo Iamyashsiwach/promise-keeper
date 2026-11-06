@@ -1,14 +1,15 @@
-> Historical notes from the earlier single-human workflow. For the current workflow use [README](../../README.md) and [DEMO](../../DEMO.md).
+# Live demo video notes
 
-# Revised video provenance
+The [PromiseKeeper demo](../promise-keeper-live-demo.mp4) is a 1:36 edit of the
+completed Switch/Discord workflow. It shows three agents working with a requester
+and an independent reviewer, from the first failed check through a changed request
+and blocked stale draft.
 
-Current files: [promise-keeper-v2.mp4](../promise-keeper-v2.mp4) and [promise-keeper-walkthrough.mp4](../promise-keeper-walkthrough.mp4) contain the same revised 1:34 cut.
+The footage comes from the actual recording run. The opening previews the seeded
+failed check, and cuts remove waiting time. The orders are synthetic. Narration is
+AI-generated; the displayed messages and workflow outcomes come from the recording.
+The edit is 1920×1080 H.264/AAC with English subtitles.
 
-- This is an edited walkthrough of a completed run, not a new live screen recording.
-- The request/confirmation and builder-handoff excerpts are cropped from the participant's supplied actual room screenshots in [media](../media). Crops remove unrelated setup prose; message content has not been rewritten.
-- Other panels are editorial illustrations of the workflow and saved ledger events in [earlier evidence](../../evidence/live-run.json). They are not screenshots of a product dashboard or new software features.
-- Narration uses the open-source Kokoro neural text-to-speech model with the `am_michael` preset, generated locally. It does not use a cloned participant voice or prove Wispr usage.
-- [Voice runtime and model download source](https://github.com/thewh1teagle/kokoro-onnx). The runtime is MIT licensed; its README identifies model weights as Apache 2.0. Model weights and voice files are not included in this package.
-- Output: 1920×1080, 30 fps, H.264/AAC, English subtitle track. [NARRATION-V2.md](../NARRATION-V2.md) contains the revised spoken script; [video-v2-timeline.json](../video-v2-timeline.json) has exact scene timings.
-- The earlier Mac-system-voice cut was preserved outside the submission package as an intermediate version.
-- Wispr Insights evidence is saved separately in [media/wispr-insights.png](../media/wispr-insights.png). The participant authorized public repository publication, and the video and evidence files are now accessible from https://github.com/Iamyashsiwach/promise-keeper. The actual hackathon submission remains outstanding.
+The video and its transcript are intended to show the business workflow. The
+[Wispr Insights scorecard](../media/wispr-insights.png) is separate evidence of
+Wispr Flow use during project writing.

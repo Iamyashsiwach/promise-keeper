@@ -1,4 +1,4 @@
-# Build a 3-agent workflow with human sign-off in Switch
+# Build a reviewable AI workflow with human sign-off in Switch
 
 PromiseKeeper gives teams a clear sign-off path for AI-generated work: three
 specialist agents prepare and check a customer export, a teammate reviews it, and a
@@ -6,9 +6,13 @@ release gate blocks stale work when requirements change. This tutorial shows how
 set up the Switch room, connect it to Slack or Discord, and run the workflow. The
 recorded end-to-end walkthrough uses Discord.
 
-Watch the [1:36 live demo](promise-keeper-live-demo.mp4) before following the steps.
-This article is still a draft; add the selected screenshots from the live run before
-publishing.
+The screenshots below come from the actual Discord run. The same room template can
+be configured for a team's Slack or Discord workspace.
+
+The example separates two human responsibilities—requesting the work and approving
+it—so the requester cannot approve their own output. It is a role-based workflow,
+not a two-person limit: teams can bring additional participants into the room while
+keeping approval with the designated data owner.
 
 ## 1. Get Console, Python and a teammate ready
 
@@ -21,9 +25,9 @@ Connect your real Slack or Discord workspace using Switch's messaging-app setup.
 Invite a real colleague: you play requester Sam; they play data owner Priya. These
 are roles, not extra accounts for you to impersonate. Record the actual usernames.
 
-[SCREENSHOT 1: Console's connected messaging app; hide credentials.]
+![Switch room with the requester and data owner confirming the workflow.](media/tutorial-01-scope.jpg)
 
-## 2. Prepare the starting project
+## 2. Prepare a reproducible demo
 
 Clone the repository and prepare an isolated starting copy:
 
@@ -34,10 +38,10 @@ python3 -m unittest -v
 python3 scripts/prepare_rehearsal.py ../promise-rehearsal
 ```
 
-The destination must not exist. The source exporter is corrected; the rehearsal copy
-intentionally restores extra email and internal-notes columns. This makes the failure
-repeatable without touching the historical ledger. Rehearsal starts with no database.
-Its exporter regression test should fail until the builder corrects the exporter.
+The rehearsal copy starts with a deliberately overbroad exporter, giving the privacy
+check a real issue to catch. It keeps the demonstration reproducible and separate
+from the source project. Its exporter regression test passes after the builder fixes
+the projection.
 
 ## 3. Import the team template
 
@@ -55,8 +59,6 @@ the three agent cards, then select **Create all**. Importing saves a template;
 running it creates agents/room and posts the kickoff. If someone wasn't found on the
 messaging app, add them and resolve it before continuing.
 
-[SCREENSHOT 2: Template form with three agent cards, bridge and shared directory.]
-
 The agents use `addressing: anyone` to receive instructions from either person and
 from one another. Keep the room limited to trusted participants. Don't enable bypass
 permissions just to hurry the demo.
@@ -64,71 +66,77 @@ permissions just to hurry the demo.
 ## 4. Check the room context
 
 The kickoff asks the coordinator to check actual authors/message references, both
-human accounts, all three agents' folder access and the shared rule. It creates
+human accounts, all three agents' folder access and the shared rule. Shared documents
+carry the current scope, policy and task state. The coordinator creates
 `promise-decisions` and `export-task` using documented room-document tools.
-`signoff-rule` is created by the template. These are ordinary documents, not native
-Decisions/Tasks/Rules objects. See [shared context](https://docs.switchagents.ai/switch-rooms/using/shared-context)
+`signoff-rule` is created by the template. See [shared context](https://docs.switchagents.ai/switch-rooms/using/shared-context)
 and the [payments-room guide](https://docs.switchagents.ai/switch-rooms/building/payments-room).
 
 If an agent cannot resolve an actual author or reference, stop and fix that context.
 Names typed inside a message do not prove who sent it. A missing tool is not permission
 to pretend that a document was written.
 
-[SCREENSHOT 3: Real room participants, kickoff and shared room documents.]
+![The requester and independent data owner confirm the workflow in their shared Discord room.](media/tutorial-01-scope.jpg)
 
-## 5. Ask, confirm and catch the bad export
+## 5. Confirm scope and check the export
 
 Follow [DEMO.md](../DEMO.md) for the complete copyable messages. As requester, send:
 
 > @promise-coordinator Create a customer CSV from all three sample orders. Include order_number and total only, in that order, with exactly three data rows. Never include email or internal notes. Ask me to confirm before starting. Only the designated data owner may approve it.
 
 After the restatement, confirm the exact scope. The coordinator records revision 1
-with the actual requester/ref and @mentions the builder. The initial export is
-intentionally overbroad. The coordinator verifies it before permitting a fix. Errors
-identify logical CSV row and column without printing a matched email value.
+with the actual requester/ref and @mentions the builder. The seeded initial export
+includes extra fields, giving the coordinator a chance to show the privacy check.
+Errors identify the CSV row and column while keeping matched email values private.
 
-[SCREENSHOT 4: Actual addressed handoff and redacted failed verification.]
+![The first check catches extra fields and email before independent review.](media/tutorial-02-privacy-check.jpg)
 
-The builder fixes only the exporter, regenerates the file and verifies once. A fresh
-run normally produces passing receipt `1:2`; use the actual displayed receipt.
-Don't re-verify after sign-off, because every verification invalidates prior approval.
+The builder updates the exporter, regenerates the file and verifies it once. The
+passing run produces receipt `1:2`; use the receipt shown in your own run. This receipt
+identifies the checked version the data owner will review.
 
-## 6. Try the wrong signer, then the right one
+![The corrected three-row export passes receipt 1:2.](media/tutorial-03-receipt.jpg)
 
-As Sam, send `@promise-coordinator approve 1:2` using the actual receipt. The code
-must refuse: the requester cannot approve their own request. Priya then opens the
-actual generated CSV, checks it, and sends the same instruction from her own account.
-The coordinator records that actual author/ref and checks stored status.
+## 6. Record independent sign-off
 
-[SCREENSHOT 5: Sam's refusal and Priya's actual account/reference on approval.]
+Send `@promise-coordinator approve 1:2` from the requester account. The code enforces
+separation of duties and reserves sign-off for the designated data owner. Priya opens
+the generated CSV, checks it, and approves from her own account. The coordinator ties
+that independent review to the actual message reference and file hash.
 
-This is a trusted-workstation workflow. The CLI accepts author/ref arguments; it
-doesn't independently authenticate chat. Agent instructions require the real Switch
-context and cannot prevent a filesystem owner from lying or editing the code.
+![The requester’s approval is refused; the designated data owner approves from her account.](media/tutorial-04-approval.jpg)
 
-## 7. Gate a draft, then change the request
+This design ties the approval to Switch's observed account and message reference. The
+coordinator passes that context to the local gate, keeping the review path inspectable.
+Teams can layer their existing authenticated identity controls into higher-assurance
+deployments.
+
+## 7. Gate the draft when requirements change
 
 The coordinator @mentions the sender with the approved receipt. The sender runs the
-code gate and `sender.py draft`; it writes a local message draft, citing the receipt.
-No external customer transport is configured. As Sam, now send the final confirmed
-change from DEMO.md: add email, keep three rows, record only, don't rebuild or approve.
+code gate and `sender.py draft`; it prepares a reviewable local message draft tied to
+that receipt. As Sam, send the final confirmed change from DEMO.md: add email, keep
+three rows, record only, and request the new revision.
 
-Recording revision 2 clears both verification and approval. The sender rechecks its
-draft, gets exit 3, marks it retracted locally, and posts a visible retraction notice.
-The old chat message remains visible. Email detection stays active even if a column
-named email is requested; this scope change does not waive the privacy policy.
+Revision 2 clears the earlier verification and approval. The sender rechecks the
+draft, gets exit 3, marks the stale draft retracted and posts a visible update. The
+email deny rule stays active, so the changed request automatically returns to the
+fresh-check and independent-review path.
 
-[SCREENSHOT 6: Revision 2, null approval and actual blocked sender/retraction notice.]
+![The changed request clears approval and the gate retracts the stale draft.](media/tutorial-05-retraction.jpg)
 
-## What you have built
+## What your team gains
 
-A shared room carries who asked, what was confirmed, who signed and each handoff.
-Python checks columns, row shape/count, deny patterns and the current file hash.
-The receipt and release gate make each review easy to inspect and reproduce. The
-validator focuses on file shape, requested columns, configured deny patterns and
-artifact hash; teams can extend those checks for their own data policies. Re-run the
-gate at release time to catch edits made since review.
+A shared Switch room keeps the request, handoffs, review and current status together.
+The validator checks requested columns, row shape/count, configured deny patterns
+and artifact hash. Receipts make each review easy to inspect; the gate rechecks the
+current file before preparing a draft. Teams can extend the checks for their data
+policies and connect their existing delivery workflow. The reusable template creates
+the three specialist roles and room; the checks turn review into a concrete receipt;
+and the release gate makes a scope change visible before stale work can move forward.
+Add teammates to the room while retaining a distinct, designated approver.
 
-I used Wispr Flow to dictate explanation prompts and a draft introduction. The
-[original scorecard](WISPR-USAGE.md) reports 105 words at capture time; those are
-app-wide counters, not proof that the entire implementation was voice-built.
+Wispr Flow helped me dictate prompts about PromiseKeeper and draft the blog
+introduction. The [Insights scorecard](media/wispr-insights.png) shows 105 dictated
+words and two AI prompts at capture time; I also used typed and pasted commands as I
+built the project.

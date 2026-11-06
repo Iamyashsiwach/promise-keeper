@@ -2,7 +2,7 @@
 
 Catch risky AI work before it reaches a customer. PromiseKeeper turns a team-chat request into checked work, independent human sign-off, and a release gate that responds when requirements change.
 
-**The sign-off layer for AI agents in team chat.** Three specialist agents and two people coordinate a customer export through Switch. A privacy check catches an overbroad first version; a second person approves the corrected file; a changed request clears that approval and blocks the stale draft. The walkthrough uses synthetic orders and sends no customer messages.
+**The sign-off layer for AI agents in team chat.** Three specialist agents turn a request into a checked customer export, then a designated data owner independently reviews it. The requester cannot approve their own work. When the request changes, PromiseKeeper clears the old approval and blocks the stale draft. The example separates two human roles for accountable sign-off; the shared Switch room can include the wider team. The walkthrough uses synthetic orders and sends no customer messages.
 
 **Live demo (1:36):** [Watch the actual Discord workflow](submission/promise-keeper-live-demo.mp4) · [Transcript](submission/LIVE-DEMO-TRANSCRIPT.md)
 
@@ -36,7 +36,7 @@ Shared room documents keep the scope, policy and task context visible to every p
 
 1. Install [Switch Console](https://docs.switchagents.ai/switch-rooms/getting-started/install-switch-console) and connect a server.
 2. Clone this repository and prepare a clean copy with `python3 scripts/prepare_rehearsal.py ../promise-rehearsal`.
-3. Connect Discord or Slack and invite a second person to review the export.
+3. Connect Discord or Slack and add the requester and designated data owner; invite teammates who need to follow the work.
 4. Import [the room template](switch-room.template.yaml); set both real usernames and one shared rehearsal folder for all agents.
 5. Create the team, then follow [DEMO.md](DEMO.md) through review and a changed request.
 
@@ -75,5 +75,5 @@ Tests cover self-approval, designated data owner, redacted email/custom-pattern 
 
 - Independent review is tied to the actual Switch author and message reference. The coordinator passes that identity to the local gate; production deployments can add authenticated identity controls for higher-assurance environments.
 - The validator checks ordered columns, row shape/count, deny patterns and the artifact hash. Email stays denied even if requested as a column. New scope clears approval, and the release gate rechecks the artifact before allowing a draft.
-- The sender creates a reviewable local draft and posts a retraction notice if its approval becomes stale. This demo focuses on the approval and release decision; customer delivery can be connected to an organization's existing transport.
+- The receipt-bound release gate allows a reviewable local draft only while the approved file and current request still match. If the scope changes, it blocks the stale draft and posts a retraction notice. Teams can connect that gated release step to their existing delivery transport.
 - Policy and shared status live in Switch room documents, making the workflow easy to adapt to a team's existing chat process.

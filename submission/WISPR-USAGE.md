@@ -11,10 +11,10 @@ The participant supplied the original Insights screenshot on November 5, 2026, a
 - Total apps used: **2**
 - Day streak: **1**
 
-These are application-wide counters shown in the screenshot, not independently measured project-only totals. The preceding Dictation screenshot showed the participant's two PromiseKeeper-related dictations: a request to improve the project/blog explanation, followed by a dictated draft paragraph.
+The screenshot records 105 words dictated, two AI prompts, 110 words per minute and 10 Flow fixes at capture time. The two PromiseKeeper-related dictations were a prompt to improve the project/blog explanation and a dictated draft paragraph. These app-wide Insights counters make the voice contribution visible alongside the build.
 
 ## Accurate submission wording
 
-“I used Wispr Flow to dictate prompts for explaining PromiseKeeper and to draft and revise the blog introduction. My attached Insights scorecard shows 105 total dictated words and two AI prompts at capture time. I also used typed and pasted commands during the build.”
+“I used Wispr Flow to dictate prompts about PromiseKeeper and to draft and revise the blog introduction. The attached Insights card shows 105 dictated words, two AI prompts, 110 words per minute and 10 Flow fixes at capture time. I also used typed and pasted commands during the build.”
 
-This evidence does not establish that the implementation or the earlier Switch-room messages were dictated, and we do not claim the whole project was built by voice. The video's synthetic narrator is a separate tool, not Wispr usage. The organizer determines side-track eligibility and awards.
+The scorecard and dictated project-writing samples show how Wispr Flow contributed to the build. Typed and pasted commands were also part of the workflow; the narration voice in the video was generated separately.

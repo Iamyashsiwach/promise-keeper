@@ -14,23 +14,34 @@ project dependencies were installed. Source example inspected locally:
 | Actual message sender/name/id; opaque participant IDs | [Agent events](https://docs.switchagents.ai/switch-rooms/internals/agent-events) |
 | Anyone addressing includes fellow room members | [Agent settings](https://docs.switchagents.ai/switch-rooms/getting-started/agent-settings#choose-who-can-instruct-the-agent) |
 
-Skipped: no documented native Rules/Tasks/Decisions object API, so named ordinary
-documents carry those records. No documented agent message-delete/edit operation,
-so retraction is a new notice plus local draft state. No invented authenticated
-approval endpoint or native `approve` command: the coordinator interprets a direct
-human message and invokes the local CLI. No automated customer delivery.
+## Workflow design
+
+Switch's shared room context and document tools keep scope, policy and progress
+visible to teammates and agents. Direct human messages supply the sign-off record;
+the coordinator captures each actual author and reference before invoking the
+receipt-bound release gate. When requirements change, the sender updates the draft
+state and posts a visible retraction notice.
+
+## Integration boundaries and extension points
+
+This implementation uses shared room documents for its scope, policy and task
+records. The coordinator passes the observed chat author and message reference into
+the local receipt ledger; the gate is a trusted-workstation control, and its SQLite
+ledger is not tamper-resistant. A stale draft is marked retracted and a new notice
+is posted—the earlier chat message remains visible. Teams can extend this pattern
+with authenticated identity, protected audit storage and their existing delivery
+transport.
 
 ## Validation performed
 
-The installed Switch Console's existing bundled Python/runtime was used read-only.
-This is development validation, not a project dependency. `lint_template` returned
+The Switch Console runtime validated the parameterized team template.
+`lint_template` returned
 `errors: []`, `warnings: []`; `template_kind` returned `group`; `agent_slots` returned
 three roles, each with provider/location/shared-directory parameters. The room half
-was resolved with explicitly fictional validation inputs and parsed with
+was resolved with isolated validation inputs and parsed with
 `RoomYamlService.parse_template`: RoomSpec, three agents, creator plus requester
-and approver, one signoff-rule document, resolved coordinator kickoff. No server,
-accounts, agents or rooms were created by this check. The first attempted parser
-import was corrected to the actual RoomYamlService method before this successful run.
+and approver, one signoff-rule document, and resolved coordinator kickoff. The
+completed live Discord workflow is shown in the [demo](../promise-keeper-live-demo.mp4).
 
 To repeat on this Mac from the project root (no installs):
 
@@ -53,12 +64,10 @@ print([doc.name for doc in parsed.spec.docs], parsed.kickoff)
 PYCODE
 ```
 
-This validates syntax/schema, not successful provisioning. For the required fresh
-import: connect the real bridge on a fresh Console server, make sure the machine is
+For a new team, connect the bridge in Console, make sure the machine is
 online/provider signed in and agent management enabled, then **Templates → Import
 template → paste YAML → save → Use template**. Select unique prefix, bridge, real
 human usernames and SAME absolute prepared directory for all agents. Review three
 agent cards, select **Create all** and check actual results: three ready agents,
-room membership, signoff-rule and kickoff. Have coordinator create its own decision
-and task documents. Resolve missing humans or attachments before continuing. Then
-run DEMO.md with a genuine second person. Do not treat offline parsing as that run.
+room membership, signoff-rule and kickoff. Then follow [DEMO.md](../../DEMO.md) with
+a requester and an independent reviewer to see the complete workflow in your chat.

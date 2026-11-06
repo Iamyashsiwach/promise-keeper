@@ -26,9 +26,13 @@ Historical `evidence/live-run.json` SHA256 before and after:
 `8794b60dd59e07c422d4e92492360d61cfde46d6f6ed561f0dd4f175ff08118e`.
 It is unchanged from the pre-work commit. The local live ledger was not reset.
 
-## Remaining integration checks
+## Live workflow evidence
 
-Fresh-server provisioning, real Slack/Discord account mapping, coordinator-owned
-room-document writes, the genuine two-human/three-agent live run, and a new live
-recording are NOT established by these tests. Follow [DEMO.md](../../DEMO.md) and
-[the import checklist](SWITCH-VALIDATION.md). The old video is historical only.
+The end-to-end workflow was subsequently run in Discord with the requester and
+designated reviewer using separate accounts and all three agents. The [current
+1:36 demo](../promise-keeper-live-demo.mp4) shows the seeded privacy failure, the
+corrected passing receipt, refusal of requester self-approval, independent reviewer
+approval, a changed request clearing the prior approval, and the sender blocking
+and retracting its stale draft. The recorded run uses synthetic orders and sends no
+customer message. The test results above remain evidence for the local code paths;
+the recording provides the live chat evidence.

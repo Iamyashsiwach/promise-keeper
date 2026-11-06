@@ -1,7 +1,9 @@
-# Record the two-person sign-off story
+# Run the independent sign-off workflow
 
-Use only the three synthetic fixture orders. Sam and Priya are roles played by two
-real people with distinct chat accounts. Default team prefix `promise` gives the
+Use only the three synthetic fixture orders. Sam and Priya represent two distinct
+human responsibilities played by real people: requester and designated data owner.
+They must use separate chat accounts. Add other teammates to the room as needed;
+only the designated data owner can approve. Default team prefix `promise` gives the
 mentions below; replace the prefix everywhere if you chose another one.
 
 ## Prepare off camera
